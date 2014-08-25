@@ -1,0 +1,30 @@
+{
+  "name" : "DSSCHandlebarsExpress",
+  "version" : "0.0.1",
+  "main" : "./app.js",
+  "author" : {
+    "name" : "Thomas Ames",
+    "email" : "ames.thomas@googlemail.com"
+  },
+  "keywords" : [ ],
+  "licenses" : {
+    "type" : "none"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "git://github.com/adirtyshame/DSSCHandlebarsExpress.git"
+  },
+  "bugs" : {
+    "url" : "http://github.com/adirtyshame/DSSCHandlebarsExpress/issues"
+  },
+  "dependencies" : {
+    "express" : "4.x.x",
+    "express-session" : "*",
+    "cookie-parser" : "*",
+    "mysql" : "~2.3.2",
+    "crypto" : "*",
+    "connect-mongostore" : "*",
+    "express-handlebars" : "~1.0.1",
+    "body-parser" : "~1.6.3"
+  }
+}

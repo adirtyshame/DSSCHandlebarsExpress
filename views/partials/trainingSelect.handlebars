@@ -1,0 +1,7 @@
+<label for="event">Saison</label>
+<select class="form-control" id="season" data-bind="options: seasons, value: selectedSeason, event: { change: loadEvents }"></select>
+
+<label for="event">Event:</label>
+<select class="form-control" id="event" data-bind="options: events, optionsText: 'eventName', value: selectedEvent, event: { change: loadTrainingHeats }"></select>
+<hr/>
+<h3 data-bind="text: viewModel.eventTitle()"></h3>

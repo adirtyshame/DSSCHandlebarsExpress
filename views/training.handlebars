@@ -1,0 +1,30 @@
+{{> navigation}}
+
+<div class="container">
+
+	<h2>Trainingsl&auml;ufe</h2>
+
+	{{> trainingSelect}}
+
+	<div data-bind="visible: loading">Lade L&auml;ufe ... <img src="fonts/Spinner.gif" alt="loading"></div>
+	<div data-bind="visible: heats().length === 0, text: 'Keine Trainingsläufe an diesem Event.'"></div>
+	<table data-bind="visible: heats().length > 0" class="table table-striped">
+		<thead>
+			<tr>
+				<th class="hidden-xs">Datum</th><th>Klasse</th><th class="hidden-xs">Status</th><th>Reaktion</th><th>Total</th><th>Speed (km/h)</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: heats">
+			<tr data-bind="css: $parent.heatStatus($data.raceStatus)">
+				<td class="hidden-xs" data-bind="text: timeStamp"></td>
+				<td data-bind="text: className"></td>
+				<td class="hidden-xs" data-bind="text: raceStatus"></td>
+				<td data-bind="text: timeReaction"></td>
+				<td data-bind="text: timeTotal"></td>
+				<td data-bind="text: topSpeed"></td>
+			</tr>
+		</tbody>
+	</table>
+	<!--	<button id="reload" type="button" class="btn btn-primary">reload</button>-->
+</div>
+<script src="js/heats.js" type="text/javascript"></script>

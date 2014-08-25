@@ -1,0 +1,32 @@
+{{> navigation}}
+ <div class="container">
+<h1>Heats</h1>
+<table border="1" cellpadding="5">
+	<tr>
+		<th>Season</th>
+		<th>Event</th>
+		<th>Race</th>
+		<th>Type</th>
+		<th>Team</th>
+		<th>Class</th>
+		<th>Status</th>
+		<th>Reaction</th>
+		<th>Total</th>
+		<th>TopSpeed</th>
+	</tr>
+{{#each heats}}
+	<tr>
+		<td>{{this.seasonName}}</td>
+		<td>{{this.eventName}}</td>
+		<td>{{this.raceName}}</td>
+		<td>{{this.racingType}}</td>
+		<td>{{this.teamName}}</td>
+		<td>{{this.className}}</td>
+		<td>{{this.raceStatus}}</td>
+		<td>{{this.timeReaction}}</td>
+		<td>{{this.timeTotal}}</td>
+		<td>{{this.topSpeed}}</td>
+	</tr>
+{{/each}}
+</table>
+</div>
