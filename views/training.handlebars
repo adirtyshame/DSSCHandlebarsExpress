@@ -15,7 +15,7 @@
 			</tr>
 		</thead>
 		<tbody data-bind="foreach: heats">
-			<tr data-bind="css: $parent.heatStatus($data.raceStatus)">
+			<tr data-bind="ifnot: raceStatus === 'CANCELED',css: $parent.heatStatus($data.raceStatus)">
 				<td class="hidden-xs" data-bind="text: timeStamp"></td>
 				<td data-bind="text: className"></td>
 				<td class="hidden-xs" data-bind="text: raceStatus"></td>
