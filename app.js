@@ -14,8 +14,9 @@ var express = require('express'),
             supportBigNumbers: true
         }),
         bodyParser = require('body-parser'),
+        multer = require('multer'),
         app = express(),
-        hbs = exphbs.create({defaultLayout: 'main', partialsDir: 'views/partials/'});
+        hbs = exphbs.create({defaultLayout: 'main', partialsDir: 'views/partials/'})
 
 var singleServer = {
     db: "sessions",
@@ -46,6 +47,7 @@ app.use(session({
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded()); // to support URL-encoded bodies
+app.use(multer({dest:'./uploads/fullsize/'}));
 
 app.get('/', function(req, res) {
     res.redirect('/home');
@@ -302,7 +304,7 @@ app.delete('/api/craft', function(req, res) {
 });
 
 app.get('/api/image', function(req, res) {
-    var query = connection.query("select bytes from DriverPicture where driver_id="+decodeURIComponent(req.session.user.driverId));
+    var query = connection.query("select bytes from DriverPicture where driver_id=" + decodeURIComponent(req.session.user.driverId));
     var models = [];
     query.on('err', function(err) {
         console.log(err);
@@ -314,13 +316,80 @@ app.get('/api/image', function(req, res) {
     });
 });
 
-app.get('/api/driver', function(req, res){
+app.get('/api/driver', function(req, res) {
     res.send(req.session.user);
 });
 
 app.get('/logout', function(req, res) {
     req.session.destroy();
     res.redirect('/home');
+});
+
+app.post('/api/account', function(req, res) {
+     console.dir(req.files);
+//    req.busboy.on('field', function(fieldname, val) {
+//        // console.log(fieldname, val);
+////        req.body[fieldname] = val;
+//        console.log(fieldname + ' : ' + val);
+//    });
+//    req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+//
+//        tmpUploadPath = path.join(__dirname, "/uploads/fullsize/", filename);
+//
+//        file.pipe(fs.createWriteStream(tmpUploadPath));
+//    });
+//    req.busboy.on('finish', function() {
+//        res.redirect('/account');
+//    });
+//    var fstream;
+//    req.pipe(req.busboy);
+//    req.busboy.on('file', function(fieldname, file, filename) {
+//        console.log("Uploading: " + filename);
+//        fstream = fs.createWriteStream(__dirname + '/uploads/fullsize/' + filename);
+//        file.pipe(fstream);
+//        fstream.on('close', function() {
+////            res.render('account', {user: req.session.user, info: 'Aktualisiert'});
+//            //res.redirect('/account');
+//        });
+//    }).on('field', function(key, value, keyTruncated, valueTruncated) {
+//        console.log(key + ' : ' + value);
+//    });
+
+//    fs.readFile(req.files.image.path, function (err, data) {
+//
+//		var imageName = req.files.image.name;
+//
+//		/// If there's an error
+//		if(!imageName){
+//
+//			console.log("There was an error")
+//			res.redirect("/");
+//			res.end();
+//
+//		} else {
+//
+//		   var newPath = __dirname + "/uploads/fullsize/" + imageName;
+//
+//		  var thumbPath = __dirname + "/uploads/thumbs/" + imageName;
+//
+//		  /// write file to uploads/fullsize folder
+//		  fs.writeFile(newPath, data, function (err) {
+//
+//		  	/// write file to uploads/thumbs folder
+//			  im.resize({
+//				  srcPath: newPath,
+//				  dstPath: thumbPath,
+//				  width:   200
+//				}, function(err, stdout, stderr){
+//				  if (err) throw err;
+//				  console.log('resized image to fit within 200x200px');
+//				});
+//
+//			   res.redirect("/uploads/fullsize/" + imageName);
+//
+//		  });
+//		}
+//	});
 });
 
 app.listen(8080);
