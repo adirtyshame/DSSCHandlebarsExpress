@@ -1,3 +1,11 @@
+ko.bindingHandlers.fastClick = {
+    init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+        new FastButton(element, function() {
+            valueAccessor()(viewModel, event);
+        });
+    }
+};
+
 var viewModel = {
     crafts: ko.observableArray(),
     manufacturers: ko.observableArray(),

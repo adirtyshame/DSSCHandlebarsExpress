@@ -27,6 +27,14 @@ ko.bindingHandlers.modal = {
     }
 };
 
+ko.bindingHandlers.fastClick = {
+    init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+        new FastButton(element, function() {
+            valueAccessor()(viewModel, event);
+        });
+    }
+};
+
 var viewModel = {
     heats: ko.observableArray([]),
     seasons: ko.observableArray(['Saison 2014', 'Saison 2013', 'Saison 2012', 'Saison 2011']),
@@ -75,9 +83,8 @@ viewModel.loadEvents = function() {
 viewModel.loadRaces = function() {
     $.getJSON('/api/' + viewModel.selectedSeason() + '/' + viewModel.selectedEvent().eventName + '/races', function(data) {
         viewModel.races(data);
-        console.log(data.length);
         viewModel.selectedRace(data[0]);
-        $.getJSON('/api/' + viewModel.selectedSeason() + '/' + viewModel.selectedEvent().eventName +'/' + viewModel.selectedRace().raceName + '/classes', function(data) {
+        $.getJSON('/api/' + viewModel.selectedSeason() + '/' + viewModel.selectedEvent().eventName + '/' + viewModel.selectedRace().raceName + '/classes', function(data) {
             viewModel.classes(data);
         });
     });
