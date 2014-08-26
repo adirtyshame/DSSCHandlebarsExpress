@@ -21,3 +21,5 @@ node_modules
 .lock-wscript
 # MongoDB
 data
+#MacOSX
+.DS_Store
