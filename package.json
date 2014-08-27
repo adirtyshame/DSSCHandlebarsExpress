@@ -1,30 +1,34 @@
 {
-  "name" : "DSSCHandlebarsExpress",
-  "version" : "0.0.1",
-  "main" : "./app.js",
-  "author" : {
-    "name" : "Thomas Ames",
-    "email" : "ames.thomas@googlemail.com"
+  "name": "DSSCHandlebarsExpress",
+  "version": "0.0.1",
+  "main": "./app.js",
+  "author": {
+    "name": "Thomas Ames",
+    "email": "ames.thomas@googlemail.com"
   },
-  "keywords" : [ ],
-  "licenses" : {
-    "type" : "none"
+  "keywords": [],
+  "licenses": {
+    "type": "none"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "git://github.com/adirtyshame/DSSCHandlebarsExpress.git"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/adirtyshame/DSSCHandlebarsExpress.git"
   },
-  "bugs" : {
-    "url" : "http://github.com/adirtyshame/DSSCHandlebarsExpress/issues"
+  "bugs": {
+    "url": "http://github.com/adirtyshame/DSSCHandlebarsExpress/issues"
   },
-  "dependencies" : {
-    "express" : "4.x.x",
-    "express-session" : "*",
-    "cookie-parser" : "*",
-    "mysql" : "~2.3.2",
-    "crypto" : "*",
-    "connect-mongostore" : "*",
-    "express-handlebars" : "~1.0.1",
-    "body-parser" : "~1.6.3"
+  "dependencies": {
+    "express": "4.x.x",
+    "express-session": "*",
+    "cookie-parser": "*",
+    "mysql": "~2.3.2",
+    "crypto": "*",
+    "connect-mongostore": "*",
+    "express-handlebars": "~1.0.1",
+    "body-parser": "~1.6.3",
+    "imagemagick": "~0.1.3",
+    "connect-busboy": "0.0.1",
+    "multer": "~0.1.4",
+    "formidable": "~1.0.15"
   }
 }
